@@ -29,16 +29,23 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+
+        <br>
+
+        <div class="text-center">
+          <div class="row text-center">
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Sign In</button>
+            </div>
+
+            <div class="col-4">
+              <a href="{{route('register')}}" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Register</a>
+            </div>
+            <!-- /.col -->
           </div>
-          <div class="col-4">
-            <a href="{{route('register')}}" class="btn btn-primary btn-block">Registrar</a>
-          </div>
-          <!-- /.col -->
         </div>
+
       </form>
       <br>
       <div class= "row">
