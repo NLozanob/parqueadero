@@ -3,13 +3,13 @@
 @section('content')
 
 <div class="register-box bg-dark.bg-gradient text-center" >
-  <div class="card card-outline">
-    <div class="card-header text-center" style="background-color: #FBF9F1;">
+  <div class="card card-outline card-warning">
+    <div class="card-header text-center" style="background-color: #FFFFFF;">
       <a href="#">
-      <img src="{{asset('backend/dist/img/prueba2.png')}}" style="width: 60%; height: auto;">
+      <img src="{{asset('backend/dist/img/TheParkingLot.png')}}" style="width: 100%; height: auto;">
       </a>
     </div>
-    <div class="card-body" style="background-color: #FBF9F1;">
+    <div class="card-body" style="background-color: #FFFFFF;">
       <p class="login-box-msg" style="font-weight: bold;">Register a new membership</p>
 
       <form action="{{ route('register') }}" method="post">
@@ -49,7 +49,7 @@
         <div class="row text-center">
           <!-- /.col -->
           <div class="col-4 text-center">
-            <button type="submit" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Register</button>
+            <button type="submit" class="btn btn-outline-warning btn-block" style="background-color: #323232; color:white">Register</button>
           </div>
           <!-- /.col -->
         </div>

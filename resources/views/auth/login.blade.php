@@ -4,12 +4,12 @@
 
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
+  <div class="card card-outline card-warning">
     <div class="card-header text-center">
-      <a href="{{asset('backend/index2.html')}}" class="h1"><b>PARQUEADERO</b></a>
+      <a href="#" class="h1"> <img src="{{asset('backend/dist/img/TheParkingLot.png')}}" style="width: 100%; height: auto;"></a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Iniciar Sesión</p>
+      <p class="login-box-msg">Log In</p>
 
       <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -29,18 +29,16 @@
             </div>
           </div>
         </div>
-
         <br>
-
         <div class="text-center">
           <div class="row text-center">
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Sign In</button>
+              <button type="submit" class="btn btn-outline-warning" style="background-color: #323232; color:white">Sign In</button>
             </div>
 
             <div class="col-4">
-              <a href="{{route('register')}}" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Register</a>
+              <a href="{{route('register')}}" class="btn btn-outline-warning" style="background-color: #323232; color:white">Register</a>
             </div>
             <!-- /.col -->
           </div>
@@ -48,11 +46,11 @@
 
       </form>
       <br>
-      <div class= "row">
+      <div class= "row; text-center">
         <div class= "col-12">
           <p>
             @if(Route::has('password.request'))
-            <a href="{{route('password.request')}}">Olvide mi contraseña</a>
+            <a href="{{route('password.request')}}" style= "color: black">I Fotgot My Password</a>
             @endif
           </p>
         </div>
