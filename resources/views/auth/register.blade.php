@@ -49,7 +49,7 @@
         <div class="row text-center">
           <!-- /.col -->
           <div class="col-4 text-center">
-            <button type="submit" class="btn btn-outline-warning btn-block" style="background-color: #323232; color:white">Register</button>
+            <button type="submit" class="btn btn-outline-warning btn-block" style="background-color: #4a4a4a; color:white">Register</button>
           </div>
           <!-- /.col -->
         </div>

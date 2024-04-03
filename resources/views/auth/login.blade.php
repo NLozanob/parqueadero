@@ -34,11 +34,11 @@
           <div class="row text-center">
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-outline-warning" style="background-color: #323232; color:white">Sign In</button>
+              <button type="submit" class="btn btn-outline-warning" style="background-color: #4a4a4a; color:white">Sign In</button>
             </div>
 
             <div class="col-4">
-              <a href="{{route('register')}}" class="btn btn-outline-warning" style="background-color: #323232; color:white">Register</a>
+              <a href="{{route('register')}}" class="btn btn-outline-warning" style="background-color: #4a4a4a; color:white">Register</a>
             </div>
             <!-- /.col -->
           </div>
