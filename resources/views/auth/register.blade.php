@@ -6,7 +6,7 @@
   <div class="card card-outline card-warning">
     <div class="card-header text-center" style="background-color: #FFFFFF;">
       <a href="#">
-      <img src="{{asset('backend/dist/img/TheParkingLot.png')}}" style="width: 100%; height: auto;">
+      <img src="{{asset('backend/dist/img/TPL.png')}}" style="width: 100%; height: auto;">
       </a>
     </div>
     <div class="card-body" style="background-color: #FFFFFF;">
