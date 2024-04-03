@@ -17,7 +17,7 @@
                         width="24"
                         height="24"
                         style="padding-left:4px"
-                        color="gray"
+                        color="#4a4a4a"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
