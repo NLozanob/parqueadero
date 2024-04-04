@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #45474B">
         <!-- Brand Logo -->
         <a href="#" class="brand-link text-center">
             <img src="{{asset('backend/dist/img/Parking.png')}}" alt="" class="brand-image img-circle elevation-3" style="opacity: .6">

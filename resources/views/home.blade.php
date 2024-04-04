@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="background-color: #F5F7F8">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">

@@ -2,13 +2,13 @@
 @section('title', 'Login')
 @section('content')
 
-<div class="login-box">
+<div class="login-box" >
   <!-- /.login-logo -->
   <div class="card card-outline card-warning">
     <div class="card-header text-center">
       <a href="#" class="h1"> <img src="{{asset('backend/dist/img/TPL.png')}}" style="width: 100%; height: auto;"></a>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="background-color: #F5F7F8">
       <p class="login-box-msg">Log In</p>
 
       <form method="POST" action="{{ route('login') }}">
@@ -34,11 +34,11 @@
           <div class="row text-center">
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-outline-warning" style="background-color: #4a4a4a; color:white">Sign In</button>
+              <button type="submit" class="btn btn-outline-secondary" style="background-color: #495E57; color:white">Sign In</button>
             </div>
 
             <div class="col-4">
-              <a href="{{route('register')}}" class="btn btn-outline-warning" style="background-color: #4a4a4a; color:white">Register</a>
+              <a href="{{route('register')}}" class="btn btn-outline-secondary" style="background-color: #495E57; color:white">Register</a>
             </div>
             <!-- /.col -->
           </div>

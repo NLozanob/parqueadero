@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #45474B">
      <!-- Left navbar links -->
      <ul class="navbar-nav">
          <li class="nav-item">
@@ -10,14 +10,14 @@
          <!-- Navbar Search -->
          <div class="user-panel d-flex">
              <div class="image">
-                 <a href="#" class=""> {{ Auth::user()->name }}
+                 <a href="#" class="text-decoration-none text-light"> {{ Auth::user()->name }}
                      <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         style="padding-left:4px"
-                        color="#4a4a4a"
+                        color="#ffffff"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"

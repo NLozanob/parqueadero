@@ -9,7 +9,7 @@
       <img src="{{asset('backend/dist/img/TPL.png')}}" style="width: 100%; height: auto;">
       </a>
     </div>
-    <div class="card-body" style="background-color: #FFFFFF;">
+    <div class="card-body" style="background-color: #F5F7F8;">
       <p class="login-box-msg" style="font-weight: bold;">Register a new membership</p>
 
       <form action="{{ route('register') }}" method="post">
@@ -49,7 +49,7 @@
         <div class="row text-center">
           <!-- /.col -->
           <div class="col-4 text-center">
-            <button type="submit" class="btn btn-outline-warning btn-block" style="background-color: #4a4a4a; color:white">Register</button>
+            <button type="submit" class="btn btn-outline-secondary btn-block" style="background-color: #495E57; color:white">Register</button>
           </div>
           <!-- /.col -->
         </div>
