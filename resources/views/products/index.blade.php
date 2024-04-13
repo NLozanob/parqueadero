@@ -1,18 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="content">
-    <div class="container-fluid">
-            <div class="row">
-            <div class="col-12">
-                <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">DataTable with minimal features & hover style</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
-                    <thead>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>DataTables</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DataTable Product</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
@@ -22,9 +39,9 @@
                         <th>Quantity</th>
                         <th>Action</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($products as $product)
+                  </thead>
+                  <tbody>
+                  @foreach($products as $product)
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>{{$product->name}}</td>
@@ -42,27 +59,63 @@
                         </td>
                     </tr>
                     @endforeach
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
-                    </tr>
-                    </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-</section>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
 
 @endsection
 
 @push('scripts')
 
-
+<script type="text/javascript">
+		$(function () {
+			$("#example1").DataTable({
+				"responsive": true, 
+				"lengthChange": true, 
+				"autoWidth": false,
+				//"buttons": ["excel", "pdf", "print", "colvis"],
+				"language": 
+						{
+							"sLengthMenu": "Mostrar MENU entradas",
+							"sEmptyTable": "No hay datos disponibles en la tabla",
+							"sInfo": "Mostrando START a END de TOTAL entradas",
+							"sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
+							"sSearch": "Buscar:",
+							"sZeroRecords": "No se encontraron registros coincidentes en la tabla",
+							"sInfoFiltered": "(Filtrado de MAX entradas totales)",
+							"oPaginate": {
+								"sFirst": "Primero",
+								"sPrevious": "Anterior",
+								"sNext": "Siguiente",
+								"sLast": "Ultimo"
+							},
+							/*"buttons": {
+								"print": "Imprimir",
+								"colvis": "Visibilidad Columnas"
+								/*"create": "Nuevo",
+								"edit": "Cambiar",
+								"remove": "Borrar",
+								"copy": "Copiar",
+								"csv": "fichero CSV",
+								"excel": "tabla Excel",
+								"pdf": "documento PDF",
+								"collection": "Colección",
+								"upload": "Seleccione fichero...."
+							}*/
+						}
+			});//.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+		});
+	</script>
 
 @endpush
