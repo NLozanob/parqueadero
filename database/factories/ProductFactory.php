@@ -22,6 +22,7 @@ class ProductFactory extends Factory
             'quantity' => $this->faker->randomNumber(2),
             'price' => $this->faker->randomNumber(2, 0, 1000),
             'expiry_date' => $this->faker->date(),
+            'image' => $this->faker->imageUrl(640, 480, 'animals', true),
         ];
     }
 }

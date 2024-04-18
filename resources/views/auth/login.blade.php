@@ -2,7 +2,7 @@
 @section('title', 'Login')
 @section('content')
 
-<div class="login-box" >
+<div class="login-box" width="60%">
   <!-- /.login-logo -->
   <div class="card card-outline card-warning">
     <div class="card-header text-center">
