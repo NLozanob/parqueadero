@@ -41,6 +41,8 @@ class ProductController extends Controller{
 			$product->price = $request->price;
 			$product->quantity = $request->quantity;
 			$product->image = $imagename;
+            $product->status = 1;
+            $product->registerby = $request->user()->id;
 			$product->save();
 
             return redirect()->route('products.index');
@@ -58,7 +60,14 @@ class ProductController extends Controller{
         
     }
 
-    public function destroy(string $id){
-        
+    public function destroy(Product $product){
+        $product->delete();
+        return redirect()->route('products.index')->with('Delete','ok');
     }
+
+    public function changestatusdoproduct(Request $request){
+		$product = Product::find($request->product_id);
+		$product->status=$request->status;
+		$product->save();
+	}
 }

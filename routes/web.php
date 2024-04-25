@@ -6,17 +6,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,6 +17,7 @@ Route::group(['middleware'=> ['auth']], function(){
     Route::get('/home', [App\Hppt\Controllers\HomeController::class, 'index'])->name('home');
     //Products product
     Route::resource('products', ProductController::class);
+    Route::get('changestatusdoproduct', [ProductController::class, 'changestatusdoproduct'])->name('changestatusdoproduct');
     //Customers customer
     Route::resource('customers', ProductController::class);
     //Orders order
