@@ -42,7 +42,12 @@
                     					<td>{{ $product -> price}}</td>
                     					<td>{{ $product -> expiry_date}}</td>
                     					<td>{{ $product -> quantity}}</td>
-										          <td>{{ $product -> image}}</td>
+										<td>
+											@if ($product->image!=null)
+												<img class="img-responsive img-thumbnail" src="{{ asset('uploads/products/'.$product->image) }}" style="height: 70px; width: 70px" alt="">
+											@elseif ($product->image==null)
+											@endif
+										</td>
                               <td>
                                 <input data-id="{{$product->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
 											            data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $product->status ? 'checked' : '' }}>								
