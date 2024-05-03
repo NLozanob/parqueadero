@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\DB;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller{
     public function index(){
@@ -19,7 +20,7 @@ class ProductController extends Controller{
         return view('products.create');
     }
 
-    public function store(Request $request){
+    public function store(ProductRequest $request){
         $image = $request->file('image');
 			$slug = str::slug($request->name);
 			if (isset($image))
@@ -57,10 +58,7 @@ class ProductController extends Controller{
         return view('products.edit', compact('product'));
     }
 
-    public function update(Request $request, $id){
-
-        
-		
+    public function update(ProductRequest $request, $id){
 			$product = Product::find($id);
 			
 			$image = $request->file('image');
