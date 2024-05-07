@@ -29,7 +29,7 @@
 										<th>Expiry date</th>
 										<th>Quantity</th>
 										<th>Image</th>
-                    <th>Status</th>
+                    					<th>Status</th>
 										<th width="50px">Acción</th>
 									</tr>
 								</thead>

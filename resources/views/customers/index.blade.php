@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Product List')
+@section('title','Customer List')
 
 @section('content')
 
@@ -16,7 +16,7 @@
 					<div class="card">
 						<div class="card-header bg-secondary" style="font-size: 1.75rem;font-weight: 500; line-height: 1.2; margin-bottom: 0.5rem;">
 							@yield('title')
-								<a href="{{ route('products.create') }}" class="btn btn-primary float-right" title="Create"><i class="fas fa-plus nav-icon"></i></a>
+								<a href="{{ route('customers.create') }}" class="btn btn-primary float-right" title="Create"><i class="fas fa-plus nav-icon"></i></a>
 						</div>
 						<div class="card-body">
 							<table id="example1" class="table table-bordered table-hover" style="width:100%">
@@ -34,27 +34,27 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($products as $product)
+									@foreach($customers as $customer)
 									<tr>
-										<td>{{ $product -> id}}</td>
-                    					<td>{{ $product -> name}}</td>
-                    					<td>{{ $product -> description}}</td>
-                    					<td>{{ $product -> price}}</td>
-                    					<td>{{ $product -> expiry_date}}</td>
-                    					<td>{{ $product -> quantity}}</td>
+										<td>{{ $customer -> id}}</td>
+                    					<td>{{ $customer -> name}}</td>
+                    					<td>{{ $customer -> description}}</td>
+                    					<td>{{ $customer -> price}}</td>
+                    					<td>{{ $customer -> expiry_date}}</td>
+                    					<td>{{ $customer -> quantity}}</td>
 										<td>
-											@if ($product->image!=null)
-												<img class="img-responsive img-thumbnail" src="{{ asset('uploads/products/'.$product->image) }}" style="height: 70px; width: 70px" alt="">
-											@elseif ($product->image==null)
+											@if ($customer->image!=null)
+												<img class="img-responsive img-thumbnail" src="{{ asset('uploads/customers/'.$customer->image) }}" style="height: 70px; width: 70px" alt="">
+											@elseif ($customer->image==null)
 											@endif
 										</td>
                               <td>
-                                <input data-id="{{$product->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-											            data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $product->status ? 'checked' : '' }}>								
+                                <input data-id="{{$customer->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
+											            data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $customer->status ? 'checked' : '' }}>								
                               </td>
                               <td>
-                                <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <form class="d-inline delete-form" action="{{ route('products.destroy', $product) }}"  method="POST">
+                                <a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                <form class="d-inline delete-form" action="{{ route('customers.destroy', $customer) }}"  method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash-alt"></i></button>

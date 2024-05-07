@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Create Products')
+@section('title','Create Customers')
 
 @section('content')
 
@@ -17,22 +17,22 @@
 						<div class="card-header bg-secondary">
 							<h3>@yield('title')</h3>
 						</div>
-						<form method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
+						<form method="POST" action="{{route('customers.store')}}" enctype="multipart/form-data">
 							@csrf
 							<div class="card-body">
 								<div class="row">
 									<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Name<strong style="color:red;">(*)</strong></label>
-											<input type="text" class="form-control" name="name" placeholder="Example, plush" autocomplete="off" value="{{ old('name') }}">
+											<input type="text" class="form-control" name="name" placeholder="Example, plush" autocomplete="off" value="{{ old('name')}}">
 										</div>
                                         <div class="form-group label-floating">
 											<label class="control-label">Price<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="price" placeholder="$1.000" autocomplete="off" value="{{ old('price') }}">
+											<input type="input" class="form-control" name="price" placeholder="$1.000" autocomplete="off" value="{{ old('price')}}">
 										</div>
                                         <div class="form-group label-floating">
 											<label class="control-label">Quantity<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="quantity" placeholder="0" autocomplete="off" value="{{ old('quantity') }}">
+											<input type="input" class="form-control" name="quantity" placeholder="0" autocomplete="off" value="{{ old('quantity')}}">
 										</div>
                                         <label class="control-label">Description<strong style="color:red;">(*)</strong></label>
                                         <div class="form-group label-floating">
@@ -59,7 +59,7 @@
 										<button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
 									</div>
 									<div class="col-lg-2 col-xs-4">
-										<a href="{{ route('products.index') }}" class="btn btn-danger btn-block btn-flat">Back</a>
+										<a href="{{ route('customers.index') }}" class="btn btn-danger btn-block btn-flat">Back</a>
 									</div>
 								</div>
 							</div>
