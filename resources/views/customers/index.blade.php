@@ -41,7 +41,7 @@
                     					<td>{{ $customer -> identification_document}}</td>
                     					<td>{{ $customer -> address}}</td>
                     					<td>{{ $customer -> phone_number}}</td>
-                    					<td>{{ $customer -> Email}}</td>
+                    					<td>{{ $customer -> email}}</td>
 										<td>
 											@if ($customer->image!=null)
 												<img class="img-responsive img-thumbnail" src="{{ asset('uploads/customers/'.$customer->image) }}" style="height: 70px; width: 70px" alt="">

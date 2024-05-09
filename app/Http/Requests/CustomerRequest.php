@@ -19,25 +19,23 @@ class CustomerRequest extends FormRequest{
         if(request()->isMethod('POST')){
             return [
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
-                'description' => 'nullable',
-                'price' => 'required',
-                'expiry_date' => 'nullable',
+                'identification_document' => 'required',
+                'address' => 'required',
+                'phone_number' => 'required',
                 'quantity' => 'required',
+                'email' => 'required',
 				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
-                'status' => 'nullable',
-                'registerby' => 'nullable',
             ];
             
         } elseif(request()->isMethod('PUT')){
             return [
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
-                'description' => 'nullable',
-                'price' => 'required',
-                'expiry_date' => 'nullable',
+                'identification_document' => 'required',
+                'address' => 'required',
+                'phone_number' => 'required',
                 'quantity' => 'required',
+                'email' => 'required',
 				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
-                'status' => 'nullable',
-                'registerby' => 'nullable',
             ];
         }
     }
