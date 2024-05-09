@@ -24,15 +24,15 @@
 									<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Name<strong style="color:red;">(*)</strong></label>
-											<input type="text" class="form-control" name="name" placeholder="Example, plush" autocomplete="off" value="{{ old('name') }}">
+											<input type="text" class="form-control" name="name" placeholder="Example, plush" autocomplete="off" value="{{ old('name') }}" required>
 										</div>
                                         <div class="form-group label-floating">
 											<label class="control-label">Price<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="price" placeholder="$1.000" autocomplete="off" value="{{ old('price') }}">
+											<input type="input" class="form-control" name="price" placeholder="$1.000" autocomplete="off" value="{{ old('price') }}" required>
 										</div>
                                         <div class="form-group label-floating">
 											<label class="control-label">Quantity<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="quantity" placeholder="0" autocomplete="off" value="{{ old('quantity') }}">
+											<input type="input" class="form-control" name="quantity" placeholder="0" autocomplete="off" value="{{ old('quantity') }}" required>
 										</div>
                                         <label class="control-label">Description<strong style="color:red;">(*)</strong></label>
                                         <div class="form-group label-floating">

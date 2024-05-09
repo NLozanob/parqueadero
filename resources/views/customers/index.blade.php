@@ -24,12 +24,12 @@
 									<tr>
 										<th width="10px">ID</th>
 										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-										<th>Expiry date</th>
-										<th>Quantity</th>
+										<th>Identification document</th>
+										<th>Address</th>
+										<th>Phone number</th>
+										<th>Email</th>
 										<th>Image</th>
-                    <th>Status</th>
+                    					<th>Status</th>
 										<th width="50px">Acción</th>
 									</tr>
 								</thead>
@@ -38,10 +38,10 @@
 									<tr>
 										<td>{{ $customer -> id}}</td>
                     					<td>{{ $customer -> name}}</td>
-                    					<td>{{ $customer -> description}}</td>
-                    					<td>{{ $customer -> price}}</td>
-                    					<td>{{ $customer -> expiry_date}}</td>
-                    					<td>{{ $customer -> quantity}}</td>
+                    					<td>{{ $customer -> identification_document}}</td>
+                    					<td>{{ $customer -> address}}</td>
+                    					<td>{{ $customer -> phone_number}}</td>
+                    					<td>{{ $customer -> Email}}</td>
 										<td>
 											@if ($customer->image!=null)
 												<img class="img-responsive img-thumbnail" src="{{ asset('uploads/customers/'.$customer->image) }}" style="height: 70px; width: 70px" alt="">
@@ -50,7 +50,7 @@
 										</td>
                               <td>
                                 <input data-id="{{$customer->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-											            data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $customer->status ? 'checked' : '' }}>								
+											            data-toggle="toggle" data-on="Active" data-off="Inac" {{ $customer->status ? 'checked' : '' }}>								
                               </td>
                               <td>
                                 <a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>

@@ -7,7 +7,7 @@ use App\Models\Customer;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\DB;
+use App\Http\Requests\CustomerRequest;
 
 class CustomerController extends Controller{
     public function index(){
@@ -19,7 +19,7 @@ class CustomerController extends Controller{
         return view('customers.create');
     }
 
-    public function store(Request $request){
+    public function store(CustomerRequest $request){
         $image = $request->file('image');
 			$slug = str::slug($request->name);
 			if (isset($image))
@@ -58,10 +58,8 @@ class CustomerController extends Controller{
         return view('customers.edit', compact('customer'));
     }
 
-    public function update(Request $request, $id){
+    public function update(CustomerRequest $request, $id){
 
-        
-		
 			$customer = Customer::find($id);
 			
 			$image = $request->file('image');

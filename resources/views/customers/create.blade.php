@@ -24,21 +24,24 @@
 									<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Name<strong style="color:red;">(*)</strong></label>
-											<input type="text" class="form-control" name="name" placeholder="Example, plush" autocomplete="off" value="{{ old('name')}}">
+											<input type="text" class="form-control" name="name" placeholder="Example, plush" autocomplete="off" value="{{ old('name')}}" required>
 										</div>
                                         <div class="form-group label-floating">
-											<label class="control-label">Price<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="price" placeholder="$1.000" autocomplete="off" value="{{ old('price')}}">
+											<label class="control-label">Identification document<strong style="color:red;">(*)</strong></label>
+											<input type="input" class="form-control" name="identification_document" placeholder="0000" autocomplete="off" value="{{ old('identification_document')}}" required>
 										</div>
                                         <div class="form-group label-floating">
-											<label class="control-label">Quantity<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="quantity" placeholder="0" autocomplete="off" value="{{ old('quantity')}}">
+											<label class="control-label">Address<strong style="color:red;">(*)</strong></label>
+											<input type="input" class="form-control" name="address" placeholder="cl #, Cr # ##" autocomplete="off" value="{{ old('address')}}" required>
 										</div>
-                                        <label class="control-label">Description<strong style="color:red;">(*)</strong></label>
                                         <div class="form-group label-floating">
-                                            <div style="display:flex;">
-										        <textarea class="form-control" name="description" rows="4" placeholder="Enter Description"></textarea>
-                                            </div>
+											<label class="control-label">Phone number<strong style="color:red;">(*)</strong></label>
+											<input type="input" class="form-control" name="phone_number" placeholder="0000000000" autocomplete="off" value="{{ old('phone_number')}}" required>
+										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Email<strong style="color:red;">(*)</strong></label>
+											<input type="input" class="form-control" name="email" placeholder="example@email.com" autocomplete="off" value="{{ old('email')}}" required>
+										</div>
 										</div>
                                         <div class="row">
                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
@@ -50,7 +53,7 @@
 								</div>
 									</div>
 								</div>
-								<input type="hidden" class="form-control" name="estado" value="1">
+								<input type="hidden" class="form-control" name="status" value="1">
 								<input type="hidden" class="form-control" name="registradopor" value="{{ Auth::user()->id }}">
 							</div>
 							<div class="card-footer">
