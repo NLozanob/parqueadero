@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Parqueadero') }}</title>
 
 
     <!-- Google Font: Source Sans Pro -->
@@ -46,7 +46,7 @@
     
     @stack('css')
     @include('layouts.partial.header')
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])ñ
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     @yield('content')

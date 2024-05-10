@@ -14,7 +14,8 @@ use App\Http\Requests\OrderRequest;
 class OrderController extends Controller{
   
     public function index(){
-        $orders= Order::all();
+        $orders= Order::select('customers.name', 'customers.identification_document', 'orders.date', 'orders.value', 'orders.status')
+        ->join('customers', 'customer_id', '=', 'orders.customer_id')->get();
         return view('orders.index', compact('orders'));
     }
 

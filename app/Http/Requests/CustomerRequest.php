@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class CustomerRequest extends FormRequest{
    
     public function authorize(): bool{
-        return false;
+        return true;
     }
 
     /**
