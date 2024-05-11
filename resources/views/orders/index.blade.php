@@ -35,8 +35,8 @@
 									@foreach($orders as $order)
 									<tr>
 										<td>{{ $order -> id}}</td>
-                    					<td>{{ $order -> customer -> name}}</td>
-										<td>{{ $order -> customer -> identification_document}}</td>
+                    					<td>{{ $order -> order -> name}}</td>
+										<td>{{ $order -> order -> identification_document}}</td>
                     					<td>{{ $order -> date}}</td>
                     					<td>{{ $order -> value}}</td>
                               <td>
@@ -48,7 +48,7 @@
                                 <form class="d-inline delete-form" action="{{ route('orders.destroy', $order) }}"  method="POST">
                                   @csrf
                                   @method('DELETE')
-                                  <button type="submit" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                  <button type="submit" class="btn btn-danger btn-sm" title="delete"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                               </td>
 									</tr>
@@ -76,7 +76,7 @@
 				$.ajax({
 					type: "GET",
 					dataType: "json",
-					url: 'changestatusdoorder',
+					url: 'changestatusorder',
 					data: {'status': status, 'order_id': order_id},
 					success: function(data){
 					  console.log(data.success)
@@ -89,14 +89,14 @@
 	$('.delete-form').submit(function(e){
 		e.preventDefault();
 		Swal.fire({
-			title: 'Estas seguro?',
-			text: "Este registro se eliminara definitivamente",
+			title: 'Are you sure?',
+			text: "This record will be permanently deleted",
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Aceptar',
-			cancelButtonText: 'Cancelar'
+			confirmButtonText: 'Accept',
+			cancelButtonText: 'cancel'
 		}).then((result) => {
 			if (result.isConfirmed) {
 				this.submit();
@@ -104,11 +104,11 @@
 		})
 	});
 	</script>
-	@if(session('eliminar') == 'ok')
+	@if(session('delete') == 'ok')
 		<script>
 			Swal.fire(
-				'Eliminado',
-				'El registro ha sido eliminado exitosamente',
+				'Deleted',
+				'The registration has been successfully deleted',
 				'success'
 			)
 		</script>
@@ -122,17 +122,17 @@
 				//"buttons": ["excel", "pdf", "print", "colvis"],
 				"language": 
 						{
-							"sLengthMenu": "Mostrar MENU entradas",
+							"sLengthMenu": "Show _MENU_ entries",
 							"sEmptyTable": "No hay datos disponibles en la tabla",
-							"sInfo": "Mostrando START a END de TOTAL entradas",
-							"sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
-							"sSearch": "Buscar:",
+							"sInfo": "Showing _START_ a _END_ de _TOTAL_ entries",
+							"sInfoEmpty": "Showing 0 a 0 de 0 entries",
+							"sSearch": "Search:",
 							"sZeroRecords": "No se encontraron registros coincidentes en la tabla",
-							"sInfoFiltered": "(Filtrado de MAX entradas totales)",
+							"sInfoFiltered": "(Filtrado de _MAX_ entries totales)",
 							"oPaginate": {
 								"sFirst": "Primero",
-								"sPrevious": "Anterior",
-								"sNext": "Siguiente",
+								"sPrevious": "Previous",
+								"sNext": "Next",
 								"sLast": "Ultimo"
 							},
 							/*"buttons": {
