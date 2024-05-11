@@ -17,13 +17,13 @@ Route::group(['middleware'=> ['auth']], function(){
     Route::get('/home', [App\Hppt\Controllers\HomeController::class, 'index'])->name('home');
     //Products product
     Route::resource('products', ProductController::class);
-    Route::get('changestatusdoproduct', [ProductController::class, 'changestatusdoproduct'])->name('changestatusdoproduct');
+    Route::get('changestatusproduct', [ProductController::class, 'changestatusproduct'])->name('changestatusproduct');
     //Customers customer
     Route::resource('customers', CustomerController::class);
-    Route::get('changestatusdocustomer', [CustomerController::class, 'changestatusdocustomer'])->name('changestatusdocustomer');
+    Route::get('changestatuscustomer', [CustomerController::class, 'changestatuscustomer'])->name('changestatuscustomer');
     //Orders order
     Route::resource('orders', OrderController::class);
-    Route::get('changestatusdooder', [OrderController::class, 'changestatusdoorder'])->name('changestatusdoorder');
+    Route::get('changestatusoder', [OrderController::class, 'changestatusorder'])->name('changestatusorder');
 });
 
 Route::get('/about', function () { 

@@ -82,6 +82,7 @@ class CustomerController extends Controller{
 			$customer->phone_number = $request->phone_number;
             $customer->email = $request->email;
 			$customer->image = $imagename;
+			$customer->status = 1;
             $customer->registerby = $request->user()->id;
 			$customer->save();
             
@@ -91,10 +92,10 @@ class CustomerController extends Controller{
 
     public function destroy(Customer $customer){
         $customer->delete();
-        return redirect()->route('customers.index')->with('Delete','ok');
+        return redirect()->route('customers.index')->with('delete','ok');
     }
 
-    public function changestatusdocustomer(Request $request){
+    public function changestatuscustomer(Request $request){
 		$customer = Customer::find($request->customer_id);
 		$customer->status=$request->status;
 		$customer->save();

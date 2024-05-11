@@ -22,7 +22,6 @@ class CustomerRequest extends FormRequest{
                 'identification_document' => 'required',
                 'address' => 'required',
                 'phone_number' => 'required',
-                'quantity' => 'required',
                 'email' => 'required',
 				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
             ];
@@ -33,7 +32,6 @@ class CustomerRequest extends FormRequest{
                 'identification_document' => 'required',
                 'address' => 'required',
                 'phone_number' => 'required',
-                'quantity' => 'required',
                 'email' => 'required',
 				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
             ];

@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\DB;
 use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller{
@@ -89,10 +88,10 @@ class ProductController extends Controller{
 
     public function destroy(Product $product){
         $product->delete();
-        return redirect()->route('products.index')->with('Delete','ok');
+        return redirect()->route('products.index')->with('delete','ok');
     }
 
-    public function changestatusdoproduct(Request $request){
+    public function changestatusproduct(Request $request){
 		$product = Product::find($request->product_id);
 		$product->status=$request->status;
 		$product->save();

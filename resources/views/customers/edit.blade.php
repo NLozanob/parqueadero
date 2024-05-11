@@ -32,9 +32,11 @@
 											<label class="control-label">Identification document<strong style="color:red;">(*)</strong></label>
 											<input type="input" class="form-control" name="identification_document" placeholder="0000" autocomplete="off" value="{{$customer->identification_document}}">
 										</div>
+                                        <label class="control-label">Address<strong style="color:red;">(*)</strong></label>
                                         <div class="form-group label-floating">
-											<label class="control-label">Address<strong style="color:red;">(*)</strong></label>
-											<input type="input" class="form-control" name="address" placeholder="cl #, Cr # ##" autocomplete="off" value="{{$customer->address}}">
+                                            <div style="display:flex;">
+										        <textarea class="form-control" name="address" rows="2" placeholder="Enter address" value="{{$customer->address}}">{{ old('address', $customer->address) }}</textarea>
+                                            </div>
 										</div>
                                         <div class="form-group label-floating">
 											<label class="control-label">Phone number<strong style="color:red;">(*)</strong></label>
@@ -47,7 +49,10 @@
                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Image</label>
-                                                <input type="file" class="form-control-file" name="image" id="image" value="{{$customer->image}}">
+                                                <input type="file" class="form-control-file" name="image" id="image">
+												@if($customer->image)
+        											<img src="{{ asset('uploads/customers/'.$customer->image) }}" alt="Customer Image" style="height: 70px; width: 70px">
+    											@endif
                                             </div>
                                         </div>
 								
