@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('customer_id') -> unsigned();
             $table->dateTime('date');
-            $table->decimal('value', 8,2);
+            $table->decimal('price', 8,2);
             $table->string('status') -> nullable();
             $table->string('registerby') -> nullable();
             $table->string('route') -> nullable();

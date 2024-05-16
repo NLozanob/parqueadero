@@ -3,79 +3,108 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Customer;
-use App\Models\Product;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
-use Carbon\Carbon;
 use App\Http\Requests\OrderRequest;
+use Carbon\Carbon;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
-class OrderController extends Controller{
-  
-    public function index(){
-        $orders= Order::select('customers.name', 'customers.identification_document', 'orders.date', 'orders.value', 'orders.status')
-        ->join('customers', 'customer_id', '=', 'orders.customer_id')->get();
+class OrderController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $orders=Order::select('customers.name', 'customers.identification_document','orders.date','orders.price','orders.status')
+        -> join ('customers','customer_id','=','orders.customer_id')->get();
         return view('orders.index', compact('orders'));
     }
 
-    
-    public function create(){
-        $products= Product::where('status', '=', '1')->orderBy('name')->get();
-        $customers= Customer::where('status', '=', '1')->orderBy('name')->get();
-        $date= Carbon::now();
-        $date= $date->format('Y-m-d');
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $products = Product::where('status', '=', '1')->orderBy('name')->get();
+        $customers = Customer::where('status', '=', '1')->orderBy('name')->get();
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
 
-        return view('orders.create', compact('products','customers','date'));
+        return view('orders.create', compact('products', 'customers', 'date'));
     }
 
-    public function store(Request $request){
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         DB::beginTransaction();
         try {
-            $order= new Order();
-            $order->customer_id= $request->customer_id;
-            $order->date= $request->date;
-            $order->value= $request->value;
-            $order->status= $request->status;
-            $order->registerby= $request->registerby;
-            $order->route= $request->route;
-            $order->save();
+            $order = new Order();
 
-            $idorder= $order->id;
+            $order -> customer_id = $request->customer_id;
+            $order -> date = $request->date;
+            $order -> price = $request->price;
+            $order -> status = $request->status;
+            $order -> registerby = $request->registerby;
+            $order -> route = $request->route;
+            $order -> save();
 
-            $cont= 0;
-            while ($cont < count($item)){
-                $detailorders= new DetailOrder();
-                $detailorders->order_id= $idorder;
-                $detailorders->product_id= $request->product_id[$cont];
-                $detailorders->quantity= $request->quantity[$cont];
-                $detailorders->subtotal= $request->subtotal[$cont];
-                $detailorders->registerby= $request->registerby;
-                $detailorders->save();
-            }
+            $idorder= $order ->id;
+            
+            $cont = 0;
+            
+            //TODO: ARREGLAR ESTA PARTE
+            // while ($cont < count($item)) {
+            //     $detailorders = new DetailOrder();
+            //     $detailorders -> order_id= $idorder;
+            //     $detailorders -> product_id= $idproduct;
+            //     $detailorders -> quantity= $quantity;
+            //     $detailorders -> subtotal = $subtotal;                
 
+            // }
             DB::commit();
-            return redirect()->route('orders.index')->with('sucessMsg', 'Exitoso');
+            return redirect()->route('orders.index')->with('successMsg', 'Exitoso');
 
         } catch (Exception $e) {
-            return redirect()->back()->with('successMesg', 'Error: Fatality');
+            return redirect()->back()->with('successMsg', 'Error to register the info');
             DB::rollBack();
         }
     }
 
-    public function show(string $id){
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
         //
     }
 
-    public function edit(string $id){
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
         //
     }
 
-    public function update(Request $request, string $id){
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         //
     }
 
-    public function destroy(string $id){
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         //
     }
 }

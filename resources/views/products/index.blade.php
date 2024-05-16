@@ -26,8 +26,8 @@
 										<th>Name</th>
 										<th>Description</th>
 										<th>Price</th>
-										<th>Expiry date</th>
 										<th>Quantity</th>
+										<th>Expiry date</th>
 										<th>Image</th>
                     					<th>Status</th>
 										<th width="50px">Acción</th>
@@ -40,8 +40,8 @@
                     					<td>{{ $product -> name}}</td>
                     					<td>{{ $product -> description}}</td>
                     					<td>{{ $product -> price}}</td>
-                    					<td>{{ $product -> expiry_date}}</td>
                     					<td>{{ $product -> quantity}}</td>
+										<td>{{ $product -> expiry_date}}</td>
 										<td>
 											@if ($product->image!=null)
 												<img class="img-responsive img-thumbnail" src="{{ asset('uploads/products/'.$product->image) }}" style="height: 70px; width: 70px" alt="">
