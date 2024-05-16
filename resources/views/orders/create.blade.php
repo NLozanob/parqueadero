@@ -124,7 +124,7 @@
 								<input type="hidden" class="form-control" name="estado" value="1">
 								<input type="hidden" class="form-control" name="registradopor" value="{{ Auth::user()->id }}">
 							</div>
-
+                        
 							<div class="card-footer">
 								<div class="row">
 									<div class="col-lg-2 col-xs-4">
@@ -136,6 +136,7 @@
 								</div>
 							</div>
 						</form>
+						<br>
 					</div>
 				</div>
 			</div>
