@@ -9,15 +9,15 @@ class Order extends Model{
     use HasFactory;
 
     protected $fillable = [
-        'customer_id',
-        'date',
-        'status',
-        'registered_by',
-        'value',
+        'order_id',
+        'product_id',
+        'quantity',
+        'price',
+        'subtotal',
     ];
 
-    public function details()
+    public function order()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->belongsTo(Order::class);
     }
 }

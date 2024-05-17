@@ -63,13 +63,13 @@
 									               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 									                   <div class="form-group label-floating">
 									                       <label class="control-label">Quantity <strong style="color:red;">(*)</strong></label>
-									                       <input type="number" class="form-control" name="quantity" id="quantity" value="0">
+									                       <input type="number" class="form-control" name="quantity" id="quantity" value="1">
 									                   </div>
 									               </div>
 									               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 									                   <div class="form-group label-floating">
 									                       <label class="control-label">Price <strong style="color:red;">(*)</strong></label>
-									                       <input type="number" class="form-control" name="price" id="price">
+									                       <input type="number" class="form-control" name="price" id="price" readonly>
 									                   </div>
 									               </div>
 									               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -115,14 +115,15 @@
 									</div>
 
 									<!-- Botón Registrar -->
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4" style="margin: auto;">
-									    <button type="submit" class="btn btn-block" id="register_button" style="display: none; background-color: #40A578;">Resgister</button>
+									<div class="col-lg-4 col-xs-6" style="margin: auto;">
+									    <button type="submit" class="btn btn-block" id="register_button" style="display: none; background-color: #40A578;">Register</button>
 									</div>
 								</div>
 								<input type="hidden" class="form-control" name="status" value="1">
 								<input type="hidden" class="form-control" name="resgisterby" value="{{ Auth::user()->id }}">
 							</div>
 						</form>
+						
 						<div class="card-footer" >
 							<div class="row">
 								<div class="col-lg-2 col-xs-1">
@@ -169,95 +170,76 @@
 </script>
 
 <script type="text/javascript">
-    // Función para calcular el subtotal
-    function calculateSubtotal(quantity, price) {
-        return quantity * price;
-    }
+    $(document).ready(function() {
+        let productSelect = $('#product');
+        let productPrice = $('#price');
+        let productQuantity = $('#quantity');
+        let productSubtotal = $('#subtotal');
+        let addProductButton = $('#add_producto');
+        let orderDetailsTable = $('#order_details_table tbody');
+        let totalElement = $('#total');
+        let registerButton = $('#register_button');
+        let total = 0;
 
-    $(document).ready(function () {
-        // Calcular subtotal al cambiar la cantidad o el precio
-        $("#quantity, #price").on('input', function () {
-            var quantity = parseInt($("#quantity").val());
-            var price = parseFloat($("#price").val());
-            var subtotal = calculateSubtotal(quantity, price);
-            $("#subtotal").val(subtotal.toFixed(2));
-        });
-
-        // Actualizar precio unitario al cambiar la selección de producto
-        $("#product").change(function () {
-            var selectedProductId = $(this).val();
-            var selectedProductPrice = $(this).find('option:selected').data('price');
-            $("#price").val(selectedProductPrice);
-        });
-
-        // Arreglo para almacenar los detalles del pedido
-        var orderDetails = [];
-
-        // Función para agregar una fila a la tabla
-        function addRowToTable(productName, quantity, price, subtotal) {
-            var row = "<tr>" +
-                        "<td>" + productName + "</td>" +
-                        "<td>" + quantity + "</td>" +
-                        "<td>" + price + "</td>" +
-                        "<td>" + subtotal.toFixed(2) + "</td>" +
-                        "<td><button type='button' class='btn btn-danger remove_detail'>Remove</button></td>" +
-                      "</tr>";
-            $("#order_details_table tbody").append(row);
+        // Actualizar subtotal cuando se selecciona un producto o se cambia la cantidad
+        function updateSubtotal() {
+            let price = parseFloat(productPrice.val()) || 0;
+            let quantity = parseInt(productQuantity.val()) || 0;
+            let subtotal = price * quantity;
+            productSubtotal.val(subtotal.toFixed(2));
         }
 
-        // Función para actualizar el total
-        function updateTotal() {
-            var total = orderDetails.reduce((sum, detail) => sum + detail.subtotal, 0);
-            $("#total").text(total.toFixed(2));
-        }
+        productSelect.on('change', function() {
+            let selectedOption = $(this).find('option:selected');
+            let price = selectedOption.data('price') || 0;
+            productPrice.val(price);
+            updateSubtotal();
+        });
 
-        // Función para verificar si hay detalles y mostrar el botón de registro
-        function toggleRegisterButton() {
-            if (orderDetails.length > 0) {
-                $("#register_button").show();
-            } else {
-                $("#register_button").hide();
+        productQuantity.on('input', updateSubtotal);
+		
+
+        // Añadir producto a la tabla de detalles del pedido
+        addProductButton.on('click', function() {
+            let selectedOption = productSelect.find('option:selected');
+            let productId = selectedOption.val();
+            let productName = selectedOption.text();
+            let quantity = parseInt(productQuantity.val());
+            let price = parseFloat(productPrice.val());
+            let subtotal = parseFloat(productSubtotal.val());
+
+            if (productId && quantity > 0 && price > 0) {
+                let newRow = `
+                    <tr>
+                        <td>${productName}</td>
+                        <td>${quantity}</td>
+                        <td>$${price.toFixed(2)}</td>
+                        <td>$${subtotal.toFixed(2)}</td>
+                        <td><button type="button" class="btn btn-danger btn-sm remove-product">Remove</button></td>
+                    </tr>
+                `;
+                orderDetailsTable.append(newRow);
+
+                total += subtotal;
+                totalElement.text(total.toFixed(2));
+
+                // Mostrar el botón de registrar
+                registerButton.show();
             }
-        }
-
-        // Manejar el evento de agregar producto
-        $("#add_producto").click(function () {
-            var productId = $("#product").val();
-            var productName = $("#product option:selected").text();
-            var quantity = parseInt($("#quantity").val());
-            var price = parseFloat($("#price").val());
-            var subtotal = calculateSubtotal(quantity, price);
-
-            // Agregar el detalle al arreglo
-            orderDetails.push({ productId, productName, quantity, price, subtotal });
-
-            // Agregar la fila a la tabla
-            addRowToTable(productName, quantity, price, subtotal);
-
-            // Actualizar el total
-            updateTotal();
-
-            // Limpiar los campos del formulario
-            $("#product").val(null).trigger('change');
-            $("#quantity").val(0);
-            $("#price").val('');
-            $("#subtotal").val('');
-
-            // Mostrar el botón de registro si hay detalles
-            toggleRegisterButton();
         });
 
-        // Manejar el evento de eliminar detalle
-        $(document).on('click', '.remove_detail', function () {
-            var rowIndex = $(this).closest('tr').index();
-            orderDetails.splice(rowIndex, 1);
-            $(this).closest('tr').remove();
+        // Eliminar producto de la tabla de detalles del pedido
+        orderDetailsTable.on('click', '.remove-product', function() {
+            let row = $(this).closest('tr');
+            let subtotal = parseFloat(row.find('td').eq(3).text().replace('$', ''));
+            total -= subtotal;
+            totalElement.text(total.toFixed(2));
+            row.remove();
 
-            // Actualizar el total
-            updateTotal();
-
-            // Mostrar u ocultar el botón de registro según los detalles
-            toggleRegisterButton();
+            // Ocultar el botón de registrar si no hay productos en la lista
+            if (orderDetailsTable.find('tr').length === 0) {
+                registerButton.hide();
+            }
         });
     });
 </script>

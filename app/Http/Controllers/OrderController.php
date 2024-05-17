@@ -42,46 +42,60 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        try {
-            $order = new Order();
+        $request->validate([
+            'customer' => 'required|exists:customers,id',
+            'date' => 'required|date',
+            'status' => 'required|integer',
+            'resgisterby' => 'required|integer',
+            'products' => 'required|array',
+            'products.*.id' => 'required|exists:products,id',
+            'products.*.quantity' => 'required|integer|min:1',
+            'products.*.price' => 'required|numeric|min:0',
+        ]);
 
-            $order -> customer_id = $request->customer_id;
-            $order -> date = $request->date;
-            $order -> price = $request->price;
-            $order -> status = $request->status;
-            $order -> registerby = $request->registerby;
-            $order -> route = $request->route;
-            $order -> save();
+        // Crear la orden
+        $order = Order::create([
+            'customer_id' => $request->customer,
+            'date' => $request->date,
+            'status' => $request->status,
+            'registered_by' => $request->resgisterby,
+            'value' => 0, // Este campo se actualizará más adelante
+        ]);
 
-            $idorder= $order ->id;
-            
-            $cont = 0;
-            
-            //TODO: ARREGLAR ESTA PARTE
-            // while ($cont < count($item)) {
-            //     $detailorders = new DetailOrder();
-            //     $detailorders -> order_id= $idorder;
-            //     $detailorders -> product_id= $idproduct;
-            //     $detailorders -> quantity= $quantity;
-            //     $detailorders -> subtotal = $subtotal;                
+        $total = 0;
 
-            // }
-            DB::commit();
-            return redirect()->route('orders.index')->with('successMsg', 'Exitoso');
+        // Crear los detalles de la orden
+        foreach ($request->products as $product) {
+            $subtotal = $product['quantity'] * $product['price'];
+            $total += $subtotal;
 
-        } catch (Exception $e) {
-            return redirect()->back()->with('successMsg', 'Error to register the info');
-            DB::rollBack();
+            OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'price' => $product['price'],
+                'subtotal' => $subtotal,
+            ]);
         }
+
+        // Actualizar el valor total de la orden
+        $order->update(['value' => $total]);
+
+        // Redirigir a la lista de órdenes con un mensaje de éxito
+        return redirect()->route('orders.index')->with('success', 'Order created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(string $id){
+        $order = Order::find($id);
+        $customer = Client::where("id", $order->customer_id)->first();
+        $details = OrderDetail::with('product')
+            ->where('order_details.order_id', '=', $id)
+            ->get();
+
+        return view("orders.show", compact("order", "customer", "details"));
     }
 
     /**
@@ -105,6 +119,14 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $order->delete();
+        return redirect()->route("orders.index")->with("success", "The order has been deleted.");
+    }
+
+    public function changestatusorder(Request $request)
+    {
+        $order = Order::find($request->order_id);
+        $order->status = $request->status;
+        $order->save();
     }
 }
