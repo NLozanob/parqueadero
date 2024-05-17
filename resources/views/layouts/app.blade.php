@@ -46,7 +46,7 @@
     
     @stack('css')
     @include('layouts.partial.header')
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])ñ
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     @yield('content')

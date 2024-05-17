@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #F5F7F8">
     <section class="content-header">
 		<div class="container-fluid">
 		</div>
@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						<div class="card-header bg-secondary" style="font-size: 1.75rem;font-weight: 500; line-height: 1.2; margin-bottom: 0.5rem;">
+						<div class="card-header" style="font-size: 1.75rem;font-weight: 500; line-height: 1.2; margin-bottom: 0.5rem; background-color: #495E57;">
 							@yield('title')
 								<a href="{{ route('orders.create') }}" class="btn btn-primary float-right" title="Create"><i class="fas fa-plus nav-icon"></i></a>
 						</div>
@@ -41,7 +41,7 @@
                     					<td>{{ $order -> value}}</td>
                               <td>
                                 <input data-id="{{$order->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-											            data-toggle="toggle" data-on="Active" data-off="Inac" {{ $order->status ? 'checked' : '' }}>								
+										data-toggle="toggle" data-on="&#x2713" data-off="X" {{ $order->status ? 'checked' : '' }}>								
                               </td>
                               <td>
                                 <a href="{{ route('orders.edit',$order->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>

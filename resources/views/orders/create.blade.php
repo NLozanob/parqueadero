@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #F5F7F8">
     <section class="content-header">
 		<div class="container-fluid">
 		</div>
@@ -14,10 +14,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<div class="card-header bg-secondary">
+						<div class="card-header" style="background-color: #495E57">
 							<h3>@yield('title')</h3>
 						</div>
-						<form method="POST" action="{{route('orders.store')}}" enctype="multipart/form-data">
+						<form method="POST" action="{{ route('orders.store') }}" enctype="multipart/form-data">
 							@csrf
 							<div class="card-body">
 								<div class="row">
@@ -28,7 +28,7 @@
 											<select class="form-control select2" style="width: 100%;" name="customer" id="customer">
 												<option value>Select Customer</option>
 												@foreach($customers as $customer)
-													<option value="{{$customer->id}}">{{$customer -> name}}</option>
+													<option value="{{ $customer->id }}">{{ $customer->name }}</option>
 												@endforeach
 											</select>
 										</div>										
@@ -37,14 +37,14 @@
 									<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Date Order<strong style="color:red;">(*)</strong></label>
-											<input type="date" class="form-control" name="date" placeholder="YYYY-MM-DD" autocomplete="off" value="{{$date}}">
+											<input type="date" class="form-control" name="date" placeholder="YYYY-MM-DD" autocomplete="off" value="{{ $date }}">
 										</div>
 									</div>
 
 									<!-- SELECT PRODUCTS TABLE -->
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									   <div class="card">
-									       <div class="card-header bg-secondary">
+									       <div class="card-header" style="background-color: #495E57">
 									           <h3>Order Detail</h3>
 									       </div>
 									       <div class="card-body">
@@ -55,7 +55,7 @@
 									                       <select class="form-control select2" style="width: 100%;" name="product" id="product">
 									                           <option value>Select Product</option>
 									                           @foreach($products as $product)
-									                               <option value="{{$product->id}}"  data-price="{{$product->price}}">{{$product->name}}</option>
+									                               <option value="{{ $product->id }}" data-price="{{ $product->price }}">{{ $product->name }}</option>
 									                           @endforeach
 									                       </select>
 									                   </div>
@@ -79,7 +79,7 @@
 									                   </div>
 									               </div>
 									               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 mt-4">
-									                   <button type="button" class="btn btn-success btn-block" id="add_producto">Add</button>
+									                   <button type="button" class="btn btn-block" id="add_producto" style="background-color: #40A578;">ADD</button>
 									               </div>
 									           </div>
 									       </div>
@@ -89,9 +89,6 @@
 									<!-- Tabla para mostrar los detalles del pedido -->
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
 									    <div class="card">
-									        <!-- <div class="card-header bg-secondary">
-									            <h3>Order Details</h3>
-									        </div> -->
 									        <div class="card-body">
 									            <table class="table table-bordered" id="order_details_table">
 									                <thead>
@@ -117,26 +114,22 @@
 									    </div>
 									</div>
 
-
-								</div>
-								</div>
-								</div>
-								<input type="hidden" class="form-control" name="estado" value="1">
-								<input type="hidden" class="form-control" name="registradopor" value="{{ Auth::user()->id }}">
-							</div>
-                        
-							<div class="card-footer">
-								<div class="row">
-									<div class="col-lg-2 col-xs-4">
-										<button type="submit" class="btn btn-primary btn-block btn-flat">Create</button>
-									</div>
-									<div class="col-lg-2 col-xs-4">
-										<a href="{{ route('orders.index') }}" class="btn btn-danger btn-block btn-flat">Back</a>
+									<!-- Botón Registrar -->
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4" style="margin: auto;">
+									    <button type="submit" class="btn btn-block" id="register_button" style="display: none; background-color: #40A578;">Resgister</button>
 									</div>
 								</div>
+								<input type="hidden" class="form-control" name="status" value="1">
+								<input type="hidden" class="form-control" name="resgisterby" value="{{ Auth::user()->id }}">
 							</div>
 						</form>
-						<br>
+						<div class="card-footer" >
+							<div class="row">
+								<div class="col-lg-2 col-xs-1">
+									<a href="{{ route('orders.index') }}" class="btn btn-danger btn-block">Back</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -152,6 +145,7 @@
 		allowClear: true
 	});
 </script>
+
 <!-- SCRIPT TO LOCAL DATE -->
 <script type="text/javascript">
 	$.fn.datepicker.dates['en'] = {
@@ -159,13 +153,14 @@
 		daysShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
 		daysMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
 		months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-		monthsShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+		monthsShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
 		format: "yyyy-mm-dd"
 	};
 	$('#date').datepicker({
 		language: 'en'
 	});
 </script>
+
 <!-- SCRIPT TO SELECT PRODUCT -->
 <script type="text/javascript">
 	$("#product").select2({
@@ -187,21 +182,14 @@
             var subtotal = calculateSubtotal(quantity, price);
             $("#subtotal").val(subtotal.toFixed(2));
         });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
+
         // Actualizar precio unitario al cambiar la selección de producto
         $("#product").change(function () {
             var selectedProductId = $(this).val();
             var selectedProductPrice = $(this).find('option:selected').data('price');
             $("#price").val(selectedProductPrice);
         });
-    });
-</script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
         // Arreglo para almacenar los detalles del pedido
         var orderDetails = [];
 
@@ -211,60 +199,65 @@
                         "<td>" + productName + "</td>" +
                         "<td>" + quantity + "</td>" +
                         "<td>" + price + "</td>" +
-                        "<td>" + subtotal + "</td>" +
-                        '<td><button type="button" class="btn btn-danger btn-sm btn-delete">Delete</button></td>' +
+                        "<td>" + subtotal.toFixed(2) + "</td>" +
+                        "<td><button type='button' class='btn btn-danger remove_detail'>Remove</button></td>" +
                       "</tr>";
             $("#order_details_table tbody").append(row);
         }
 
-        // Función para calcular el subtotal
-        function calculateSubtotal(quantity, price) {
-            return quantity * price;
-        }
-
-		// Función para calcular y actualizar el total
+        // Función para actualizar el total
         function updateTotal() {
-            var total = 0;
-            $("#order_details_table tbody tr").each(function() {
-                var subtotal = parseFloat($(this).find("td:eq(3)").text());
-                total += subtotal;
-            });
+            var total = orderDetails.reduce((sum, detail) => sum + detail.subtotal, 0);
             $("#total").text(total.toFixed(2));
         }
 
-        // Evento clic del botón "Add"
-        $("#add_producto").on('click', function () {
+        // Función para verificar si hay detalles y mostrar el botón de registro
+        function toggleRegisterButton() {
+            if (orderDetails.length > 0) {
+                $("#register_button").show();
+            } else {
+                $("#register_button").hide();
+            }
+        }
+
+        // Manejar el evento de agregar producto
+        $("#add_producto").click(function () {
+            var productId = $("#product").val();
             var productName = $("#product option:selected").text();
             var quantity = parseInt($("#quantity").val());
             var price = parseFloat($("#price").val());
             var subtotal = calculateSubtotal(quantity, price);
 
-            // Agregar detalles a la tabla y al arreglo
-            addRowToTable(productName, quantity, price, subtotal);
-            orderDetails.push({productName: productName, quantity: quantity, price: price, subtotal: subtotal});
+            // Agregar el detalle al arreglo
+            orderDetails.push({ productId, productName, quantity, price, subtotal });
 
-            // Limpiar campos
+            // Agregar la fila a la tabla
+            addRowToTable(productName, quantity, price, subtotal);
+
+            // Actualizar el total
+            updateTotal();
+
+            // Limpiar los campos del formulario
+            $("#product").val(null).trigger('change');
             $("#quantity").val(0);
             $("#price").val('');
             $("#subtotal").val('');
 
-			// Actualizar total
-			updateTotal();
-
-            // Asignar evento clic al botón de eliminar
-            $(".btn-delete").off().on('click', function () {
-                var rowIndex = $(this).closest('tr').index();
-                $(this).closest('tr').remove();
-                orderDetails.splice(rowIndex, 1);
-				updateTotal();
-            });
+            // Mostrar el botón de registro si hay detalles
+            toggleRegisterButton();
         });
 
-        // Formulario de pedido submit
-        $("form").on('submit', function () {
-            // Serializar los detalles del pedido y agregarlos al formulario
-            var serializedOrderDetails = JSON.stringify(orderDetails);
-            $("<input>").attr("type", "hidden").attr("name", "order_details").val(serializedOrderDetails).appendTo($(this));
+        // Manejar el evento de eliminar detalle
+        $(document).on('click', '.remove_detail', function () {
+            var rowIndex = $(this).closest('tr').index();
+            orderDetails.splice(rowIndex, 1);
+            $(this).closest('tr').remove();
+
+            // Actualizar el total
+            updateTotal();
+
+            // Mostrar u ocultar el botón de registro según los detalles
+            toggleRegisterButton();
         });
     });
 </script>

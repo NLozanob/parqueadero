@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-color: #F5F7F8">
     <section class="content-header">
 		<div class="container-fluid">
 		</div>
@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<div class="card-header bg-secondary">
+						<div class="card-header" style="background-color: #495E57">
 							<h3>@yield('title')</h3>
 						</div>
 						<form method="POST" action="{{route('customers.store')}}" enctype="multipart/form-data">
@@ -59,11 +59,11 @@
 							</div>
 							<div class="card-footer">
 								<div class="row">
-									<div class="col-lg-2 col-xs-4">
-										<button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+								<div class="col-lg-2 col-xs-4">
+										<button type="submit" class="btn btn-block" style="background-color: #40A578;">Create</button>
 									</div>
 									<div class="col-lg-2 col-xs-4">
-										<a href="{{ route('customers.index') }}" class="btn btn-danger btn-block btn-flat">Back</a>
+										<a href="{{ route('customers.index') }}" class="btn btn-danger btn-block">Back</a>
 									</div>
 								</div>
 							</div>
