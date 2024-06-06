@@ -28,7 +28,7 @@
                                         <th>Date</th>
                                         <th>Value</th>
                                         <th>Status</th>
-                                        <th width="50px">Acción</th>
+                                        <th width="50px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,7 +44,7 @@
                                             data-toggle="toggle" data-on="&#x2713" data-off="X" {{ $order->status ? 'checked' : '' }}>                                
                                         </td>
                                         <td>
-                                            <a href="{{ route('orders.edit',$order->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{ route('orders.show',$order->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-eye"></i></a>
                                             <form class="d-inline delete-form" action="{{ route('orders.destroy', $order) }}"  method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -121,11 +121,11 @@
                 "autoWidth": false,
                 "language": {
                     "sLengthMenu": "Show _MENU_ entries",
-                    "sEmptyTable": "No hay datos disponibles en la tabla",
+                    "sEmptyTable": "No data available in the table",
                     "sInfo": "Showing _START_ a _END_ de _TOTAL_ entries",
                     "sInfoEmpty": "Showing 0 a 0 de 0 entries",
                     "sSearch": "Search:",
-                    "sZeroRecords": "No se encontraron registros coincidentes en la tabla",
+                    "sZeroRecords": "No matching records were found in the table",
                     "sInfoFiltered": "(Filtrado de _MAX_ entries totales)",
                     "oPaginate": {
                         "sFirst": "Primero",

@@ -11,7 +11,7 @@ class Product extends Model{
     protected $fillable= ['name','description','price','expiry_date','quantity','image', 'status'];
     protected $guarded= ['id','status','registerby','created_at','updated_at'];
 
-    public function orders(){
-    return $this->hasMany(Order::class);
+    public function orderdetail(){
+    return $this->hasMany(OrderDetail::class);
     }
 }

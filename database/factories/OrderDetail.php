@@ -17,10 +17,12 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_id' => Custommer::factory(),
-            'date' => $this-> faker-> dateTime(),
-            'value' => $this-> faker-> randomFloat(),
-            'status' => '1',
+            'order_id' => Order::factory(),
+            'prodcut_id' => Product::factory(),
+            'quantity' => $this-> faker-> numberBetween(),
+            'price' => $this-> faker-> numberBetween(),
+            'subtotal' => $this-> faker-> randomFloat(),
+            'route' => $this-> faker-> string(),
             'registered_by' => $this-> faker-> name(),
         ];
     }

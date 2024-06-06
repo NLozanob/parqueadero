@@ -19,10 +19,36 @@ class OrderRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
-            //
-        ];
+    public function rules(): array{
+        if(request()->isMethod('POST')){
+            return [
+                'product_id' =>'required',
+                'order_id' =>'required',
+                'price' =>'required',
+                'quantity' =>'required',
+                'subtotal' =>'required',
+                'customer_id' =>'required',
+                'date' =>'nullable',
+                'value' =>'required',
+                'status' => 'nullable',
+                'route' => 'nullable',
+                'registerby' => 'nullable',
+            ];
+            
+        } elseif(request()->isMethod('PUT')){
+            return [
+                'product_id' =>'required',
+                'order_id' =>'required',
+                'price' =>'required',
+                'quantity' =>'required',
+                'subtotal' =>'required',
+                'customer_id' =>'required',
+                'date' =>'nullable',
+                'value' =>'required',
+                'status' => 'nullable',
+                'route' => 'nullable',
+                'registerby' => 'nullable',
+            ];
+        }
     }
 }
