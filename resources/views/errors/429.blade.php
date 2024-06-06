@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demasiadas Solicitudes</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 429</title>
     <style>
         body {
             display: flex;
@@ -55,9 +58,9 @@
 <body>
     <div class="container">
         <h1>429</h1>
-        <h2>Demasiadas Solicitudes</h2>
-        <p>Has realizado demasiadas solicitudes en poco tiempo. Por favor, espera un momento e intenta nuevamente.</p>
-        <a href="{{ url('/') }}">Volver a la página principal</a>
+        <h2>Too many requests</h2>
+        <p>You've made too many requests in too little time. Please wait a moment and try again.</p>
+        <a href="{{ url('/') }}">Back to main page</a>
     </div>
 </body>
 </html>

@@ -1,8 +1,11 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Pago Requerido</title>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 402</title>
     <style>
         body {
             display: flex;
@@ -55,9 +58,9 @@
 <body>
     <div class="container">
         <h1>402</h1>
-        <h2>Pago Requerido</h2>
-        <p>Es necesario realizar un pago para acceder a esta página.</p>
-        <a href="{{ url('/') }}">Volver a la página principal</a>
+        <h2>Payment Required</h2>
+        <p>A payment is required to access this page.</p>
+        <a href="{{ url('/') }}">Back to main page</a>
     </div>
 </body>
 </html>

@@ -17,7 +17,7 @@
 						<div class="card-header" style="background-color: #495E57">
 							<h3>@yield('title')</h3>
 						</div>
-						<form method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
+						<form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
 							@csrf
 							<div class="card-body">
 								<div class="row">
@@ -36,20 +36,16 @@
 										</div>
 										<div class="form-group label-floating">
 											<label class="control-label">Description <strong style="color:red;">(*)</strong></label>
-                                        	<div class="form-group label-floating">
-                                        	    <div style="display:flex;">
-											        <textarea class="form-control" name="description" rows="3" placeholder="Enter Description"></textarea>
-                                        	    </div>
-											</div>
+                                            <textarea class="form-control" name="description" rows="3" placeholder="Enter Description">{{ old('description') }}</textarea>
 										</div>
                                         <div class="row">
-                                        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Image</label>
-                                                <input type="file" class="form-control-file" name="image" id="image" >
+                                            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Image</label>
+                                                    <input type="file" class="form-control-file" name="image" id="image">
+                                                </div>
                                             </div>
                                         </div>
-								</div>
 									</div>
 								</div>
 								<input type="hidden" class="form-control" name="estado" value="1">

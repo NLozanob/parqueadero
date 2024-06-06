@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Tiempo de sesión expirado</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 419</title>
     <style>
         body {
             display: flex;
@@ -54,9 +57,9 @@
 <body>
     <div class="container">
         <h1>419</h1>
-        <h2>Tiempo de sesión expirado</h2>
-        <p>Tu sesión ha expirado. Por favor, vuelve a iniciar sesión.</p>
-        <a href="{{ url('/') }}">Volver a la página principal</a>
+        <h2>Session Time Expired</h2>
+        <p>Your session has expired. Please log back in.</p>
+        <a href="{{ url('/') }}">Back to main page</a>
     </div>
 </body>
 </html>

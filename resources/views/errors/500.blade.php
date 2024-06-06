@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Error del servidor</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 500</title>
     <style>
         body {
             display: flex;
@@ -54,9 +57,9 @@
 <body>
     <div class="container">
         <h1>500</h1>
-        <h2>Error del servidor</h2>
-        <p>Lo sentimos, hubo un error en el servidor. Estamos trabajando para solucionarlo.</p>
-        <a href="{{ url('/') }}">Volver a la página principal</a>
+        <h2>Server Error</h2>
+        <p>Sorry, there was a server error. We're working to fix it.</p>
+        <a href="{{ url('/') }}">Back to main page</a>
     </div>
 </body>
 </html>

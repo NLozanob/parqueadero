@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Prohibido</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 403</title>
     <style>
         body {
             display: flex;
@@ -54,9 +57,9 @@
 <body>
     <div class="container">
         <h1>403</h1>
-        <h2>Prohibido</h2>
-        <p>No tienes permiso para acceder a esta página.</p>
-        <a href="{{ url('/') }}">Volver a la página principal</a>
+        <h2>Prohibited</h2>
+        <p>You do not have permission to access this page.</p>
+        <a href="{{ url('/') }}">Back to main page</a>
     </div>
 </body>
 </html>

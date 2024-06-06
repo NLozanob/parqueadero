@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Error 404</title>
 </head>
 <style>
   body
@@ -341,7 +341,7 @@
 </linearGradient>
 <linearGradient id="paint10_linear" x1="567.282" y1="246.761" x2="567.144" y2="239.051" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 <linearGradient id="paint11_linear" x1="575.336" y1="236.543" x2="417.383" y2="126.175" gradientUnits="userSpaceOnUse">
 <stop stop-color="white"/>
@@ -349,23 +349,23 @@
 </linearGradient>
 <linearGradient id="paint12_linear" x1="529.726" y1="200.324" x2="554.29" y2="176.972" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 <linearGradient id="paint13_linear" x1="568.688" y1="209.407" x2="569.018" y2="182.751" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 <linearGradient id="paint14_linear" x1="552.343" y1="166.843" x2="558.043" y2="168.082" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 <linearGradient id="paint15_linear" x1="550.457" y1="250.958" x2="552.881" y2="239.337" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 <linearGradient id="paint16_linear" x1="95.6885" y1="163.838" x2="93.7609" y2="174.468" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 <linearGradient id="paint17_linear" x1="75.5473" y1="236.543" x2="233.501" y2="126.174" gradientUnits="userSpaceOnUse">
 <stop stop-color="white"/>
@@ -373,7 +373,7 @@
 </linearGradient>
 <linearGradient id="paint18_linear" x1="124.267" y1="190.961" x2="113.114" y2="194.142" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FECBA6"/>
-<stop offset="1" stop-color="#D17878"/>
+<stop offset="1" stop-color="#F4CE14"/>
 </linearGradient>
 </defs>
 </svg>
