@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="content-wrapper" style="background-color: #F5F7F8">
+<!-- <div class="content-wrapper" style="background-color: #F5F7F8">
     <section class="content-header">
         <div class="container-fluid">
         </div>
@@ -61,7 +61,88 @@
             </div>
         </div>
     </section>
- </div>
+ </div> -->
+
+ <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    @include('layouts.partial.msg')
+
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title text-lg">@yield('title')</h3>
+
+                                <a href="{{ route('orders.create') }}" class="btn btn-primary float-right"><i
+                                        class="fas fa-plus nav-icon"></i></a>
+
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-hover">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th width="10px">ID</th>
+                                        <th>Name</th>
+                                        <th>Document</th>
+                                        <th>Date</th>
+                                        <th>Value</th>
+                                        <th>Status</th>
+                                        <th width="50px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($orders as $order)
+                                    <tr>
+                                        <td>{{ $order->id }}</td>
+                                        <td>{{ $order->customer->name }}</td>
+                                        <td>{{ $order->customer->identification_document }}</td>
+                                        <td>{{ $order->date }}</td>
+                                        <td>{{ $order->value }}</td>
+                                        <td>
+                                            <input data-id="{{ $order->id }}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
+                                            data-toggle="toggle" data-on="&#x2713" data-off="X" {{ $order->status ? 'checked' : '' }}>                                
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('orders.show',$order->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-eye"></i></a>
+                                            <form class="d-inline delete-form" action="{{ route('orders.destroy', $order) }}"  method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" title="delete"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </td>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
 @endsection
 
 @push('scripts')

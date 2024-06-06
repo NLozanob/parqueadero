@@ -17,9 +17,9 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => Order::factory(),
-            'prodcut_id' => Product::factory(),
-            'quantity' => $this-> faker-> numberBetween(),
+            'order_id' => \App\Models\Order::factory(),
+            'prodcut_id' => P\App\Models\Product::factory(),
+            'quantity' => $this-> faker-> numberBetween(1, 10),
             'price' => $this-> faker-> numberBetween(),
             'subtotal' => $this-> faker-> randomFloat(),
             'route' => $this-> faker-> string(),
